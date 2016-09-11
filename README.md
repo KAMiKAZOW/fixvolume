@@ -1,2 +1,6 @@
 # fixvolume
-Workaround für defekte Klinkenbuchse, die Stecker nicht erkennt.
+Workaround for defective headphone jacks that don't recognize when the headphones are plugged in but work otherwise.
+
+Requires:
+Linux
+amixer
