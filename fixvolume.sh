@@ -1,20 +1,22 @@
 #!/bin/sh
-# Workaround für defekte Klinkenbuchse,
-# die eingesteckte Stecker nicht erkennt.
+# Workaround for defective headphone jack
+# that doesn't recognize plugged-in headphones.
 #
-# Werte "device" und "card" ggf. anpassen.
+# Values "device" and "card" may need adjustments.
 
-# Headphone und Speaker dürfen nicht stumm sein:
+# Headphone and Speaker must not be mute:
 amixer --device=hw --card=1 sset Headphone unmute
 amixer --device=hw --card=1 sset Speaker unmute
 
-# Lautstärke für Headphone und PCM sollten auf 100% sein,
-# damit nur noch Master anzupassen ist.
+# Volume for Headphone and PCM should be 100%,
+# so that only Master needs adjustment.
 amixer --device=hw --card=1 sset Headphone 100%
 amixer --device=hw --card=1 sset PCM 100%
 
-# Über die Speaker soll aber kein Ton kommen:
+# No sound via Speaker:
 amixer --device=hw --card=1 sset Speaker 0%
 amixer --device=hw --card=1 sset Master unmute
+pacmd set-sink-port 1 analog-output-headphones
+
+# Use 60% as default value because it's not too loud
 amixer --device=hw --card=1 sset Master 60%
-# 60% als Standardwert, der nicht zu laut ist
