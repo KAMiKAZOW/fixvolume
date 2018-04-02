@@ -4,6 +4,9 @@
 #
 # Values "device" and "card" may need adjustments.
 
+# Disable loud X11 system beep
+xset b off
+
 # Set output to headphones
 pacmd set-sink-port 1 analog-output-headphones
 sleep 1
